@@ -14,7 +14,7 @@ const publicMethods = {
   parse,
   example,
   examples,
-  //showHelp,
+  showHelp,
 };
 
 export default function Args() {
