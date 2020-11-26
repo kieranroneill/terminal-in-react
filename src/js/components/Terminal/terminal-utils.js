@@ -61,7 +61,7 @@ export function modCommands(commands) {
         parse = i =>
           cmd.parse(i, {
             name,
-            help: true,
+            help: false,
             version: false,
           });
         method = definition.method; // eslint-disable-line
