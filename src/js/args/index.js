@@ -26,7 +26,7 @@ export default function Args() {
 
   // Configuration defaults
   this.config = {
-    help: true,
+    // help: true,
     usageFilter: null,
     value: null,
     name: null,

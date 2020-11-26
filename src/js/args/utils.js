@@ -252,9 +252,9 @@ export default {
 
   runCommand(details, options) {
     // If help is disabled, remove initializer
-    if (details.usage === 'help' && !this.config.help) {
-      details.init = false; // eslint-disable-line
-    }
+    // if (details.usage === 'help' && !this.config.help) {
+    //   details.init = false; // eslint-disable-line
+    // }
 
     // If command has initializer, call it
     if (details.init) {
