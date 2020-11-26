@@ -1,11 +1,21 @@
 {
-  "name": "terminal-in-react",
+  "name": "@kieranroneill/terminal-in-react",
   "version": "4.3.1",
-  "description": "A component for making a terminal in React",
+  "description": "Fork of nitin42/terminal-in-react",
   "main": "lib/js/index.js",
   "module": "src/index.js",
-  "repository": "https://www.github.com/nitin42/terminal-in-react",
   "author": "Nitin Tulswani",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kieranroneill/terminal-in-react"
+  },
+  "contributors": [
+    {
+      "name": "Kieran O'Neill",
+      "email": "kieran.oneill@protonmail.com",
+      "url": "https://kieranoneill.com"
+    }
+  ],
   "license": "MIT",
   "dependencies": {
     "lodash.camelcase": "^4.3.0",
@@ -21,6 +31,8 @@
     "whatkey": "^2.0.1"
   },
   "devDependencies": {
+    "@release-it/bumper": "^2.0.0",
+    "@release-it/conventional-changelog": "^2.0.0",
     "@storybook/react": "^3.2.3",
     "autoprefixer": "8.0.0",
     "babel-cli": "^6.26.0",
@@ -48,6 +60,7 @@
     "jest": "22.2.2",
     "jsdom": "^11.1.0",
     "react-test-renderer": "16.2.0",
+    "release-it": "^14.0.3",
     "terminal-in-react-pseudo-file-system-plugin": "3.0.0",
     "webpack": "^3.1.0",
     "webpack-bundle-analyzer": "^2.8.2",
@@ -81,5 +94,32 @@
     "terminal",
     "simple",
     "display"
-  ]
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "release-it": {
+    "git": {
+      "commitMessage": "🤖 chore: release v${version}",
+      "requireBranch": "main",
+      "requireCommits": true
+    },
+    "github": {
+      "release": true
+    },
+    "files": [
+      "lib"
+    ],
+    "hooks": {
+      "before:init": "git fetch --prune --prune-tags origin",
+      "after:bump": "yarn run build",
+      "after:release": "echo Successfully released v${version} to ${repo.repository}."
+    },
+    "plugins": {
+      "@release-it/bumper": {
+        "in": "package.json",
+        "out": "package.json"
+      }
+    }
+  }
 }

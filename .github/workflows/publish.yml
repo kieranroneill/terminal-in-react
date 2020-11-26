@@ -1,0 +1,55 @@
+name: Create release
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2-beta
+      # Setup .npmrc file to publish to GitHub Packages
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+          registry-url: "https://npm.pkg.github.com"
+          # Defaults to the user or organization that owns the workflow file
+          scope: "@kieranroneill"
+      - run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+      - name: "Checkout \U0001F6CE️"
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - name: "Install 🔧"
+        run: npm install
+      - name: "Build ⛏"
+        run: npm run build
+      - name: "Publish 🚀"
+        uses: TheRealWaldo/release-it@v0.2.1
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          json-opts: >
+            {
+              "ci": true,
+              "git": {
+                "commitMessage": "🤖 chore: release v${version}",
+                "requireBranch": "main",
+                "requireCommits": true,
+                "requireCleanWorkingDir": false,
+              },
+              "github": {
+                "release": true
+              },
+              "npm": {
+                "skipChecks": true,
+                "publish": true,
+                "access": "public",
+                "ignoreVersion": true
+              }
+            }
