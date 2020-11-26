@@ -1,11 +1,21 @@
 {
-  "name": "terminal-in-react",
+  "name": "@kieranroneill/terminal-in-react",
   "version": "4.3.1",
-  "description": "A component for making a terminal in React",
+  "description": "Fork of nitin42/terminal-in-react",
   "main": "lib/js/index.js",
   "module": "src/index.js",
-  "repository": "https://www.github.com/nitin42/terminal-in-react",
   "author": "Nitin Tulswani",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kieranroneill/terminal-in-react"
+  },
+  "contributors": [
+    {
+      "name": "Kieran O'Neill",
+      "email": "kieran.oneill@protonmail.com",
+      "url": "https://kieranoneill.com"
+    }
+  ],
   "license": "MIT",
   "dependencies": {
     "lodash.camelcase": "^4.3.0",
