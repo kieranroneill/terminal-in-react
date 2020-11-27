@@ -4,7 +4,7 @@ import examples from './examples';
 import options from './options';
 import option from './option';
 import command from './command';
-import showHelp from './help';
+// import showHelp from './help';
 import utils from './utils';
 
 const publicMethods = {
@@ -14,7 +14,7 @@ const publicMethods = {
   parse,
   example,
   examples,
-  showHelp,
+  // showHelp,
 };
 
 export default function Args() {
@@ -26,7 +26,7 @@ export default function Args() {
 
   // Configuration defaults
   this.config = {
-    // help: true,
+    help: true,
     usageFilter: null,
     value: null,
     name: null,
