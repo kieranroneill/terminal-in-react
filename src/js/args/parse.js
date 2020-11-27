@@ -6,7 +6,7 @@ export default function (argv, options) {
 
   // if (this.config.help) {
   //   // Register default options and commands
-  //   this.option('help', 'Output usage information');
+  //   this.option('help', 'output usage information');
   //   this.command('help', 'Display help', this.showHelp);
   // }
 
@@ -14,9 +14,9 @@ export default function (argv, options) {
   this.raw = parser(argv.slice(1), this.config.minimist);
 
   // If default version is allowed, check for it
-  // if (this.config.version) {
-  //   this.checkVersion(this.parent);
-  // }
+  if (this.config.version) {
+    this.checkVersion(this.parent);
+  }
 
   const subCommand = this.raw._[1];
   // const helpTriggered = this.raw.h || this.raw.help;

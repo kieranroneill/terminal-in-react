@@ -833,7 +833,8 @@ class Terminal extends Component {
     } else {
       const parsedArgs = command.parse(args);
       const type = typeof parsedArgs;
-      if (type !== 'object' || (type === 'object' && !parsedArgs.help)) {
+      // if (type !== 'object' || (type === 'object' && !parsedArgs.help)) {
+      if (type !== 'object' || (type === 'object')) {
         res = command.method(
           parsedArgs,
           this.printLine.bind(this, instance),
