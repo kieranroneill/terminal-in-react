@@ -13,7 +13,7 @@ const jsLoader = () => ({
 
 const output = () => ({
   filename: '[name]',
-  path: resolve(__dirname, '..', 'lib/bundle'),
+  path: resolve(__dirname, '..', 'build'),
   library: 'TerminalReact',
   libraryTarget: 'umd',
 });

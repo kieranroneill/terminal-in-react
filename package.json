@@ -1,9 +1,9 @@
 {
   "name": "@kieranroneill/terminal-in-react",
-  "version": "4.3.7",
+  "version": "0.0.0-development",
   "description": "Fork of nitin42/terminal-in-react",
-  "main": "lib/js/index.js",
-  "module": "src/index.js",
+  "main": "dist/index.js",
+  "module": "src/js/index.js",
   "author": "Nitin Tulswani",
   "repository": {
     "type": "git",
@@ -31,8 +31,11 @@
     "whatkey": "^2.0.1"
   },
   "devDependencies": {
-    "@release-it/bumper": "^2.0.0",
-    "@release-it/conventional-changelog": "^2.0.0",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/commit-analyzer": "^8.0.1",
+    "@semantic-release/git": "^9.0.0",
+    "@semantic-release/npm": "^7.0.8",
+    "@semantic-release/release-notes-generator": "^9.0.1",
     "@storybook/react": "^3.2.3",
     "autoprefixer": "8.0.0",
     "babel-cli": "^6.26.0",
@@ -60,7 +63,7 @@
     "jest": "22.2.2",
     "jsdom": "^11.1.0",
     "react-test-renderer": "16.2.0",
-    "release-it": "^14.0.3",
+    "semantic-release": "^17.3.0",
     "terminal-in-react-pseudo-file-system-plugin": "3.0.0",
     "webpack": "^3.1.0",
     "webpack-bundle-analyzer": "^2.8.2",
@@ -75,19 +78,10 @@
     "lint": "./node_modules/.bin/eslint components/",
     "test": "./node_modules/.bin/jest",
     "test:watch": "./node_modules/.bin/jest --watch",
-    "build": "npm run build:lib && npm run build:bundle",
+    "build": "npm run build:dist && npm run build:bundle",
     "build:bundle": "NODE_ENV=production webpack --config ./webpack/webpack.config.js",
-    "build:lib": "NODE_ENV=production babel src/js --out-dir lib/js --source-maps"
-  },
-  "jest": {
-    "testEnvironment": "node",
-    "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
-      "\\.(css)$": "<rootDir>/__mocks__/styleMock.js"
-    },
-    "setupFiles": [
-      "<rootDir>/__mocks__/dom.js"
-    ]
+    "build:dist": "NODE_ENV=production babel src/js --out-dir dist --source-maps",
+    "semantic-release": "semantic-release"
   },
   "keywords": [
     "react",
@@ -96,30 +90,7 @@
     "display"
   ],
   "publishConfig": {
+    "pkgRoot": "dist",
     "registry": "https://npm.pkg.github.com/"
-  },
-  "release-it": {
-    "git": {
-      "commitMessage": "🤖 chore: release v${version}",
-      "requireBranch": "main",
-      "requireCommits": true
-    },
-    "github": {
-      "release": true
-    },
-    "files": [
-      "lib"
-    ],
-    "hooks": {
-      "before:init": "git fetch --prune --prune-tags origin",
-      "after:bump": "yarn run build",
-      "after:release": "echo Successfully released v${version} to ${repo.repository}."
-    },
-    "plugins": {
-      "@release-it/bumper": {
-        "in": "package.json",
-        "out": "package.json"
-      }
-    }
   }
 }
