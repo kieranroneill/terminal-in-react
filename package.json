@@ -1,6 +1,6 @@
 {
   "name": "@kieranroneill/terminal-in-react",
-  "version": "0.0.0-development",
+  "version": "1.0.0",
   "description": "Fork of nitin42/terminal-in-react",
   "main": "dist/index.js",
   "module": "src/js/index.js",
